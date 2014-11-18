@@ -31,7 +31,7 @@ function createNewMap(width, height, repeat){
 }
 
 /**
- * Создание
+ * Создание игровых объектов
  * @param map
  * @param type
  * @returns {{}}
@@ -46,19 +46,19 @@ function createObject(map, type){
 
             if(type == 'spawn'){
                 obj = {
-                    _id: 1,
+                    _id: createId(),
                     point: [x, y],
                     view: draw.use($spawn).move(x*tileWidth, y*tileWidth)
                 };
             }else if(type == 'food'){
                 obj = {
-                    _id: 2,
+                    _id: createId(),
                     point: [x, y],
                     view: draw.use($food).move(x*tileWidth, y*tileWidth)
                 };
             }else if(type == 'unit'){
                 obj = {
-                    _id: 3,
+                    _id: createId(),
                     point: [x, y],
                     view: draw.use($unit).move(x*tileWidth, y*tileWidth)
                 };
@@ -69,6 +69,20 @@ function createObject(map, type){
     return obj;
 }
 
+/**
+ * Генератор id
+ * @returns {string}
+ */
+function createId(){
+    return '' + (new Date()).getTime() + (GL.inc++);
+}
+
+/**
+ * Расстояние между двумя точками
+ * @param point1
+ * @param point2
+ * @returns {number}
+ */
 function getDistance(point1, point2){
     return Math.sqrt(Math.pow(point1[0] - point2[0], 2) + Math.pow(point1[1] - point2[1], 2));
 }

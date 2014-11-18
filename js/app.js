@@ -4,6 +4,26 @@ var draw = SVG('drawing').size(1888, 928);
 
 var tileWidth = 16;
 
+var $cityHall = draw.symbol();
+$cityHall.rect(tileWidth, tileWidth).radius(3).attr({ fill: '#faff23' });
+$cityHall.circle(10).center(tileWidth/2, tileWidth/2).attr({ fill: '#686868' });
+
+var $mine = draw.symbol();
+$mine.rect(tileWidth, tileWidth).radius(3).attr({ fill: '#faff23' });
+$mine.circle(10).center(tileWidth/2, tileWidth/2).attr({ fill: '#686868' });
+
+var $forge = draw.symbol();
+$forge.rect(tileWidth, tileWidth).radius(3).attr({ fill: '#faff23' });
+$forge.circle(10).center(tileWidth/2, tileWidth/2).attr({ fill: '#686868' });
+
+var $house= draw.symbol();
+$house.rect(tileWidth, tileWidth).radius(3).attr({ fill: '#faff23' });
+$house.circle(10).center(tileWidth/2, tileWidth/2).attr({ fill: '#686868' });
+
+var $tower= draw.symbol();
+$tower.rect(tileWidth, tileWidth).radius(3).attr({ fill: '#faff23' });
+$tower.circle(10).center(tileWidth/2, tileWidth/2).attr({ fill: '#686868' });
+
 var $spawn = draw.symbol();
 $spawn.rect(tileWidth, tileWidth).radius(3).attr({ fill: '#faff23' });
 $spawn.circle(10).center(tileWidth/2, tileWidth/2).attr({ fill: '#686868' });
@@ -15,6 +35,7 @@ var $unit = draw.symbol();
 $unit.circle(tileWidth).attr({ fill: '#2b2b2b' });
 
 var map = createNewMap(118, 58, 20);
+
 GL.spawn1 = createObject(map, 'spawn');
 GL.food1 = createObject(map, 'food');
 GL.units = [];
@@ -33,11 +54,11 @@ map.forEach(function(row, h){
 });
 
 GL.grid = new PF.Grid(map[0].length, map.length, map);
+GL.inc = 0;
 
 var ID = setInterval(function(){
     gameLoop();
 }, 1000);
-
 
 function gameLoop(){
     GL.units.forEach(function(unit){

@@ -13,10 +13,7 @@ function Unit(object){
     this.path = [];
 
     this.getPath = function(point){
-        console.log(this.point[0], this.point[1], point[0], point[1]);
-        var a = this.finder.findPath(this.point[0], this.point[1], point[0], point[1], GL.grid.clone());
-        console.log('a', a);
-        return a;
+        return this.finder.findPath(this.point[0], this.point[1], point[0], point[1], GL.grid.clone());
     };
 
     this.simpleMove = function(){
@@ -41,7 +38,7 @@ function Unit(object){
      * На каждом такте запускается именно она
      */
     this.thinking = function(){
-        console.log(this);
+        //console.log(this);
         if(this.curAction == 'move'){
             this.simpleMove();
         }else if(this.curAction == 'stay'){
