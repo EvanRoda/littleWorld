@@ -47,7 +47,7 @@ map.forEach(function(row, h){
         if(cell){
             draw.rect(tileWidth, tileWidth).
                 radius(3).
-                attr({ fill: '#657586' }).
+                attr({ stroke: '#657586', fill: '#e3c971' }).
                 move(w*tileWidth, h*tileWidth);
         }
     })
